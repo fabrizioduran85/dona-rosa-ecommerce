@@ -1,0 +1,22 @@
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: -380px;
+  width: 350px;
+  height: 100vh;
+  z-index: 2000;
+  transition: right 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-drawer.open {
+  right: 0;
+}
+
+@media (max-width: 576px) {
+  .cart-drawer {
+    width: 100%;
+    right: -100%;
+  }
+}

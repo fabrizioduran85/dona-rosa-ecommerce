@@ -1,0 +1,42 @@
+<div class="container my-5">
+  <div class="bg-dark text-white p-5 rounded border border-secondary shadow-lg">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h1 class="text-warning fw-bold m-0">¡Bienvenido, {{ usuario?.nombre }}!</h1>
+        <p class="text-info m-0">Correo: {{ usuario?.email }}</p>
+      </div>
+      <button (click)="logout()" class="btn btn-outline-danger">
+        <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+      </button>
+    </div>
+
+    <!-- DatePipe aplicado a la fecha guardada -->
+    <p class="text-secondary small">
+      <i class="bi bi-clock-history"></i> Sesión iniciada el: <strong>{{ usuario?.fechaLogin | date:'medium' }}</strong>
+    </p>
+
+    <hr class="border-secondary my-4">
+
+    <h4 class="text-warning mb-3"><i class="bi bi-speedometer2"></i> Panel Estadístico del Sistema</h4>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="p-3 bg-secondary bg-opacity-25 border border-secondary rounded text-center">
+          <h3 class="text-warning fw-bold">8</h3>
+          <p class="m-0 text-secondary">Productos en Carta</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-3 bg-secondary bg-opacity-25 border border-secondary rounded text-center">
+          <h3 class="text-info fw-bold">24</h3>
+          <p class="m-0 text-secondary">Pedidos Atendidos Hoy</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-3 bg-secondary bg-opacity-25 border border-secondary rounded text-center">
+          <h3 class="text-success fw-bold">S/ 1,250.00</h3>
+          <p class="m-0 text-secondary">Ingresos Estimados</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

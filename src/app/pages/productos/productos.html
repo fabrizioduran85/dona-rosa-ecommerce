@@ -1,0 +1,50 @@
+<div class="container my-5">
+  <div class="text-center mb-4">
+    <h1 class="text-warning fw-bold">Carta y Especialidades</h1>
+    <p class="text-secondary">El verdadero sabor broaster y hamburguesas 100% caseras</p>
+  </div>
+
+  <!-- Filtros Estilo Avance 1 -->
+  <div class="d-flex justify-content-center flex-wrap gap-2 mb-4">
+    <button class="btn btn-sm rounded-pill px-3" [ngClass]="categoriaActiva === 'todos' ? 'btn-warning fw-bold' : 'btn-outline-secondary text-white'" (click)="filtrarCategoria('todos')">Todos</button>
+    <button class="btn btn-sm rounded-pill px-3" [ngClass]="categoriaActiva === 'combos' ? 'btn-warning fw-bold' : 'btn-outline-secondary text-white'" (click)="filtrarCategoria('combos')">Combos</button>
+    <button class="btn btn-sm rounded-pill px-3" [ngClass]="categoriaActiva === 'porciones' ? 'btn-warning fw-bold' : 'btn-outline-secondary text-white'" (click)="filtrarCategoria('porciones')">Porciones</button>
+    <button class="btn btn-sm rounded-pill px-3" [ngClass]="categoriaActiva === 'hamburguesas' ? 'btn-warning fw-bold' : 'btn-outline-secondary text-white'" (click)="filtrarCategoria('hamburguesas')">Hamburguesas</button>
+    <button class="btn btn-sm rounded-pill px-3" [ngClass]="categoriaActiva === 'bebidas' ? 'btn-warning fw-bold' : 'btn-outline-secondary text-white'" (click)="filtrarCategoria('bebidas')">Bebidas</button>
+  </div>
+
+  <!-- Buscador -->
+  <div class="mb-4 mx-auto" style="max-width: 600px;">
+    <div class="input-group">
+      <span class="input-group-text bg-secondary text-white border-secondary"><i class="bi bi-search"></i></span>
+      <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="Buscar plato..." [(ngModel)]="busqueda">
+    </div>
+  </div>
+
+  <!-- Grid de Productos Responsive -->
+  <div class="row g-4" *ngIf="productosFiltrados.length > 0">
+    <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let prod of productosFiltrados">
+      <div class="card h-100 bg-dark text-white border-secondary shadow-sm rounded-3 overflow-hidden">
+        <img [src]="prod.imagen" class="card-img-top" [alt]="prod.nombre" style="height: 180px; object-fit: cover;">
+        <div class="card-body d-flex flex-column p-3">
+          <h5 class="card-title text-warning fw-bold mb-1 fs-6">{{ prod.nombre | uppercase }}</h5>
+          <p class="card-text text-secondary small mb-2 flex-grow-1" style="font-size: 0.85rem;">{{ prod.descripcion }}</p>
+          
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <span class="fs-5 fw-bold text-success">{{ prod.precio | currency:'S/ ':'symbol':'1.2-2' }}</span>
+            <span class="badge" [ngClass]="prod.stock > 10 ? 'bg-primary' : 'bg-danger'">Stock: {{ prod.stock }}</span>
+          </div>
+
+          <button class="btn btn-danger btn-sm w-100 mt-3 rounded-pill fw-bold" (click)="agregarAlCarrito(prod)">
+            <i class="bi bi-plus-lg"></i> Agregar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="productosFiltrados.length === 0" class="text-center my-5 py-5 text-secondary">
+    <i class="bi bi-emoji-frown fs-1"></i>
+    <h4 class="mt-3">No se encontraron productos en esta categoría.</h4>
+  </div>
+</div>

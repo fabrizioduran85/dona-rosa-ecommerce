@@ -1,0 +1,14 @@
+<div class="d-flex flex-column min-vh-100 bg-dark text-white position-relative">
+  <app-navbar></app-navbar>
+  
+  <main class="flex-grow-1">
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- Botón Flotante de WhatsApp -->
+  <a href="https://wa.me/51987654321" target="_blank" class="whatsapp-float bg-success text-white rounded-circle shadow-lg d-flex align-items-center justify-content-center text-decoration-none" style="position: fixed; bottom: 20px; right: 20px; width: 55px; height: 55px; z-index: 1050; font-size: 1.8rem;">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <app-footer></app-footer>
+</div>
