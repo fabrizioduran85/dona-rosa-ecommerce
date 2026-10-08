@@ -9,14 +9,15 @@ export interface Producto {
   categoria: string;
   precio: number;
   stock: number;
-  descripcion?: string; // <-- Propiedad opcional añadida
+  descripcion?: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductoService {
-  private apiUrl = 'http://localhost:3000/productos';
+  // Cambiamos localhost por la URL pública de My JSON Server
+  private apiUrl = 'https://my-json-server.typicode.com/fabrizioduran85/dona-rosa-ecommerce/productos';
 
   constructor(private http: HttpClient) {}
 
